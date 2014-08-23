@@ -15,7 +15,7 @@ root.cssselect("div[align='left']")
 scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "Peter", "occupation": "painter"})
 #
 # # An arbitrary query against the database
-scraperwiki.sql.select("* from data where 'name'='Peter'")
+print scraperwiki.sql.select("* from data where 'name'='Peter'")
 
 # You don't have to do things with the ScraperWiki and lxml libraries. You can use whatever libraries are installed
 # on Morph for Python (https://github.com/openaustralia/morph-docker-python/blob/master/pip_requirements.txt) and all that matters
