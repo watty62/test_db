@@ -12,10 +12,10 @@ root = lxml.html.fromstring(html)
 root.cssselect("div[align='left']")
 #
 # # Write out to the sqlite database using scraperwiki library
-scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "Ian", "occupation": "tester"})
+scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "Peter", "occupation": "painter"})
 #
 # # An arbitrary query against the database
-scraperwiki.sql.select("* from data where 'name'='peter'")
+scraperwiki.sql.select("* from data where 'name'='Peter'")
 
 # You don't have to do things with the ScraperWiki and lxml libraries. You can use whatever libraries are installed
 # on Morph for Python (https://github.com/openaustralia/morph-docker-python/blob/master/pip_requirements.txt) and all that matters
