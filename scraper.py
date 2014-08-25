@@ -37,7 +37,7 @@ finally:
     if con:
         con.close() 
         
-
+con = lite.connect('test.db')
 with con:    
     
     cur = con.cursor()    
@@ -47,3 +47,5 @@ with con:
 
     for row in rows:
         print row
+if con:
+    con.close()
