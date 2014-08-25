@@ -5,7 +5,7 @@ import sqlite3 as lite
 import sys
 
 try:
-    con = lite.connect('test.db')
+    con = lite.connect('data.db')
 
     cur = con.cursor()  
 
