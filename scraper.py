@@ -1,25 +1,27 @@
-# This is a template for a Python scraper on Morph (https://morph.io)
-# including some code snippets below that you should find helpful
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-import scraperwiki
-import lxml.html
-#
-# # Read in a page
-html = scraperwiki.scrape("http://foo.com")
-#
-# # Find something on the page using css selectors
-root = lxml.html.fromstring(html)
-root.cssselect("div[align='left']")
-#
-# # Write out to the sqlite database using scraperwiki library
-# scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "Peter", "occupation": "painter"})
-#
-# # An arbitrary query against the database
-test_select =  scraperwiki.sql.select("* from data where 'name'='Peter'")
+import sqlite3 as lite
+import sys
 
-print test_select
+con = None
 
-# You don't have to do things with the ScraperWiki and lxml libraries. You can use whatever libraries are installed
-# on Morph for Python (https://github.com/openaustralia/morph-docker-python/blob/master/pip_requirements.txt) and all that matters
-# is that your final data is written to an Sqlite database called data.sqlite in the current working directory which
-# has at least a table called data.
+try:
+    con = lite.connect('test.db')
+    
+    cur = con.cursor()    
+    cur.execute('SELECT SQLITE_VERSION()')
+    
+    data = cur.fetchone()
+    
+    print "SQLite version: %s" % data                
+    
+except lite.Error, e:
+    
+    print "Error %s:" % e.args[0]
+    sys.exit(1)
+    
+finally:
+    
+    if con:
+        con.close()
